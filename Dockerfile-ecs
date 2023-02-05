@@ -1,0 +1,59 @@
+FROM ruby:3.1.2-alpine3.16
+
+ENV LANG C.UTF-8
+RUN apk upgrade && \
+    apk add --no-cache \
+    bash \
+    build-base \
+    curl-dev \
+    git \
+    graphviz \
+    imagemagick \
+    imagemagick-dev \
+    less \
+    libxml2-dev \
+    libxslt-dev \
+    mysql-client \
+    mysql-dev \
+    nodejs \
+    openssl \
+    readline \
+    readline-dev \
+    tar \
+    ttf-freefont \
+    tzdata \
+    udev \
+    wget \
+    yarn \
+    yaml \
+    yaml-dev \
+    vim \
+    zlib \
+    zlib-dev
+
+
+# -------------------------------------------------
+
+ENV APP_HOME /matsuhub-backend
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+ENV GEM_HOME=/bundle
+
+ADD Gemfile* $APP_HOME/
+
+ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
+  BUNDLE_JOBS=4 \
+  BUNDLE_PATH=$GEM_HOME
+
+RUN gem install bundler
+RUN bundle config set force_ruby_platform true
+RUN gem update
+RUN bundle install
+
+ADD . $APP_HOME
+RUN echo $RAILS_CONFIG_MASTER_KEY > config/master.key
+RUN echo $RAILS_CONFIG_CREDENTIALS_YML_ENC > config/credentials.yml.enc
+
+EXPOSE 8080
+CMD bundle exec rails s -p 8080 -b '0.0.0.0'
