@@ -55,5 +55,7 @@ ADD . $APP_HOME
 RUN echo $RAILS_CONFIG_MASTER_KEY > config/master.key
 RUN echo $RAILS_CONFIG_CREDENTIALS_YML_ENC > config/credentials.yml.enc
 
+ENV MATSUHUB_TEST=$MATSUHUB_TEST
+
 EXPOSE 8080
 CMD bundle exec rails s -p 8080 -b '0.0.0.0'
