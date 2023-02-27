@@ -35,7 +35,7 @@ RUN gem update
 
 # -------------------------------------------------
 
-ENV APP_HOME /matsuhub-back
+ENV APP_HOME /matsuhub-backend
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 

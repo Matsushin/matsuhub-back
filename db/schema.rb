@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2021_05_14_031304) do
 
-  create_table "areas", charset: "utf8mb4", force: :cascade do |t|
+  create_table "areas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "description", null: false
     t.string "area_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "canvas", charset: "utf8mb4", force: :cascade do |t|
+  create_table "canvas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.bigint "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_05_14_031304) do
     t.index ["owner_id"], name: "index_canvas_on_owner_id"
   end
 
-  create_table "canvas_members", charset: "utf8mb4", force: :cascade do |t|
+  create_table "canvas_members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "canvas_id", null: false
     t.bigint "user_id", null: false
     t.string "authority", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_05_14_031304) do
     t.index ["canvas_id", "user_id"], name: "index_canvas_members_on_canvas_id_and_user_id", unique: true
   end
 
-  create_table "labels", charset: "utf8mb4", force: :cascade do |t|
+  create_table "labels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "area_id", null: false
     t.bigint "canvas_id", null: false
     t.bigint "created_user_id", null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_05_14_031304) do
     t.index ["updated_user_id"], name: "index_labels_on_updated_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.string "encrypted_password", default: "", null: false
