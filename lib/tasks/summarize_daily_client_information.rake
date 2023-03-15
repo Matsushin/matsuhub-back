@@ -11,8 +11,7 @@ namespace :summarize_daily_client_information do
   def summarize_daily_client_information(options = {})
     puts "Start summarize daily user information."
     ActiveRecord::Base.transaction do
-    
-      if options[:dry_run] || error
+      if options[:dry_run]
         puts 'Rollback.'
         raise ActiveRecord::Rollback
       else
