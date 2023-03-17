@@ -16,6 +16,8 @@ gem 'rack-cors'
 gem 'enumerize'
 gem 'active_interaction'
 gem 'rails-i18n', '~> 6.0.0'
+gem "sentry-ruby"
+gem "sentry-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
