@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/health_check', to: "health_check#index"
+  get '/sentry_test', to: "sentry_test#index"
 
   namespace :api do
     namespace :v1 do

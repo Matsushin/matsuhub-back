@@ -215,6 +215,11 @@ GEM
       sprockets-rails
       tilt
     semantic_range (3.0.0)
+    sentry-rails (5.8.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.8.0)
+    sentry-ruby (5.8.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -271,6 +276,8 @@ DEPENDENCIES
   rspec-rails
   rspec_junit_formatter
   sass-rails (>= 6)
+  sentry-rails
+  sentry-ruby
   spring
   tzinfo-data
   web-console (>= 4.1.0)
