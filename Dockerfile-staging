@@ -6,6 +6,7 @@ RUN apk upgrade && \
     bash \
     build-base \
     curl-dev \
+    coreutils \
     git \
     graphviz \
     imagemagick \
@@ -23,6 +24,7 @@ RUN apk upgrade && \
     ttf-freefont \
     tzdata \
     udev \
+    util-linux \
     wget \
     yarn \
     yaml \
